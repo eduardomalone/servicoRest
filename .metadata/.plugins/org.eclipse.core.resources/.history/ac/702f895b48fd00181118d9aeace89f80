@@ -1,0 +1,60 @@
+package br.com.projeto.action;
+
+import java.util.List;
+
+import com.opensymphony.xwork2.Action;
+
+import br.com.projeto.entity.Paciente;
+
+public class PacienteAction implements Action {
+	
+	private Paciente paciente;
+	
+	private List<Paciente> pacientes;
+
+	@Override
+	public String execute() throws Exception {
+		
+		this.pacientes = listar();
+		
+		return "success";
+	}
+	
+	public List<Paciente> listar() throws Exception {
+		
+		// Buscar todos os pacientes
+		
+		return null;
+		
+	}
+	
+	public String cadastrar() throws Exception {
+		
+		// Preparar cadastro
+		
+		return "create";
+	}
+	
+	public String editar() throws Exception {
+		
+		// Preparar edição
+		
+		return "edit";
+	}
+	
+	public String salvar() throws Exception{
+	
+		// Salvar novo usuário ou salvar alterações do paciente
+		
+		return execute();
+	}
+	
+	public String remover() throws Exception {
+		
+		// remover usuario
+		
+		return execute();
+		
+	}
+
+}

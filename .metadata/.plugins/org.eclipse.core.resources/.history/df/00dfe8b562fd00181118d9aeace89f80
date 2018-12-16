@@ -1,0 +1,7 @@
+html {
+	font-family: "Verdana";
+}
+
+tr {
+	padding: 3px;
+}

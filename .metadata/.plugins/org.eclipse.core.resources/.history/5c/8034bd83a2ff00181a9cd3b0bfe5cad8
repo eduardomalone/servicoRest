@@ -1,0 +1,124 @@
+package br.com.projeto.dao;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.projeto.entity.Exame;
+import br.com.projeto.entity.Medico;
+import br.com.projeto.util.ConnectionFactory;
+
+public class ExameDao {
+	
+	private PacienteDao pacienteDao = new PacienteDao();
+	private MedicoDao medicoDao = new MedicoDao();
+	
+	public List<Exame> findAll() throws Exception {
+		
+		List<Exame> exames = new ArrayList<Exame>();
+		
+		String query = "SELECT * FROM dbo.Exame";
+		
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			con = new ConnectionFactory().getConnection();
+			stmt = con.prepareStatement(query);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				exames.add(new Exame(
+						rs.getLong("id"), 
+						rs.getString("nome"), 
+						pacienteDao.findById(rs.getLong("idPaciente")), 
+						medicoDao.findById(rs.getLong("idMedico")), 
+						rs.getDate("data")));
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(rs != null) rs.close();
+			if(stmt != null) stmt.close();
+			if(con != null) con.close();
+		}
+		
+		return exames;
+		
+	}
+	
+	//TODO alterar a tabela exame (colocar data e campo id ser identity e fazer os relacionamentos)
+	
+	public void create(Exame exame) throws Exception {
+		
+		String query = "INSERT INTO dbo.Exame(nome, idPaciente, idMedico, data, ativo) VALUES (?,?,?,?, 1)";
+		
+		Connection con = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			
+			con = new ConnectionFactory().getConnection();
+			stmt = con.prepareStatement(query);
+			
+			stmt.setString(1, exame.getNome());
+			stmt.setLong(2, exame.getPaciente().getId());
+			stmt.setLong(3, exame.getMedico().getId());
+			//stmt.setDate(4, exame.getData());
+			stmt.setDate(4, new Date(exame.getData().getTime()));
+			
+			stmt.execute();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+		}finally {
+			if(stmt != null) stmt.close();
+			if(con != null) con.close();
+		}
+		
+	}
+	
+	public void update(Exame exame) throws Exception {
+		
+		String query = "UPDATE dbo.Exame SET "
+				+ "nome = ?, medicoId = ?, pacienteId = ?, data = ? "
+				+ "WHERE id = ?";
+		
+		Connection con = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			
+			con = new ConnectionFactory().getConnection();
+			stmt = con.prepareStatement(query);
+			
+			stmt.setString(1, exame.getNome());
+			stmt.setLong(2, exame.getMedico().getId());
+			stmt.setLong(3, exame.getPaciente().getId());
+			stmt.setDate(4, new Date(exame.getData().getTime()));
+			
+			stmt.setLong(5, exame.getId());
+
+			stmt.execute();
+			
+		} catch(Exception e) {
+			e.printStackTrace(arg0);
+		}
+		finally {
+			if(stmt != null) stmt.close();
+			if(con != null) con.close();
+		}
+		
+	}
+
+}

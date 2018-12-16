@@ -1,0 +1,27 @@
+package br.com.projeto.servico;
+
+import java.util.ArrayList;
+
+import javax.jws.WebService;
+
+import br.com.projeto.entity.Exame;
+
+@WebService(endpointInterface = "br.com.projeto.servico.SEIExame")
+public abstract class SEIExameImpl implements SEIExame{
+
+	@Override
+	public Exame consultarSoap(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Exame> consultar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+}

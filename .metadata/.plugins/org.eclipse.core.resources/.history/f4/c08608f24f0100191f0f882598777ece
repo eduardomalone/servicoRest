@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+    "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+    
+    
+    <validators>
+
+    <field name="nome">
+
+        <field-validator type="requiredstring">
+
+            <param name="trim">true</param>
+
+            <message key="errors.required" />
+
+        </field-validator>
+
+    </field>
+
+    <field name="cpf">
+
+        <field-validator type="required">
+
+            <message key="errors.required" />
+
+        </field-validator>
+
+        <field-validator type="int">
+
+            <param name="min">11</param>
+
+            <param name="max">11</param>
+
+            <message key="errors.range"/>
+
+        </field-validator>
+
+    </field>
+
+    <field name="paciente">
+
+        <field-validator type="requiredstring">
+
+            <message key="errors.required" />
+
+        </field-validator>
+
+        <field-validator type="paciente">
+
+            <message key="errors.invalid" />
+
+        </field-validator>
+
+    </field>
+    
+    <field name="endereco">
+
+        <field-validator type="requiredstring">
+
+            <message key="errors.required" />
+
+        </field-validator>
+
+        <field-validator type="endereco">
+
+            <message key="errors.invalid" />
+
+        </field-validator>
+
+    </field>
+    
+
+    <field name="crm">
+
+        <field-validator type="requiredstring">
+
+            <message key="errors.required" />
+
+        </field-validator>
+
+    </field>
+
+</validators>

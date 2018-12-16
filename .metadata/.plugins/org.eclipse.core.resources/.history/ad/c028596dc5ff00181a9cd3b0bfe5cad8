@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<table class="tableList">
+	<tr>
+		<td width="33.33%">
+			<a href="medico" class="imgLink">
+				<img src="./images/medico.png"><br/>
+				Médicos
+			</a>
+		</td>
+		<td width="33.33%">
+			<a href="paciente" class="imgLink">
+				<img src="./images/usuario.png"><br/>
+				Pacientes
+			</a>
+		</td>
+		<td width="33.33%">
+			<a href="exame" class="imgLink">
+				<img src="./images/exame.png"><br/>
+				Exames
+			</a>
+		</td>
+	</tr>
+</table>
+
+<hr/>
+
+</body>
+</html>

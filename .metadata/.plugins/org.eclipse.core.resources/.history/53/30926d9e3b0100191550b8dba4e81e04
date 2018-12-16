@@ -1,0 +1,30 @@
+package br.com.projeto.servico;
+
+import java.util.ArrayList;
+
+import javax.jws.WebService;
+
+import br.com.projeto.dao.ExameDao;
+import br.com.projeto.entity.Exame;
+
+@WebService(endpointInterface = "br.com.projeto.servico.SEIExame")
+public class SIBExame implements SEIExame {
+
+	@Override
+	public Exame consultarSoap(int id) {
+		ExameDao dao = new ExameDao();
+		try {
+			return dao.findById(id);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<Exame> consultar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

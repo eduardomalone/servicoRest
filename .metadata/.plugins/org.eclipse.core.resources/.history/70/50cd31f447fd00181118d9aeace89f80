@@ -1,0 +1,44 @@
+package br.com.projeto.action;
+
+import com.opensymphony.xwork2.Action;
+
+public class PacienteAction implements Action {
+	
+	// TODO incluir objeto paciente
+
+	@Override
+	public String execute() throws Exception {
+		
+		listar();
+		
+		return "success";
+	}
+	
+	public void listar() throws Exception {
+		
+		// Buscar todos os pacientes
+		
+	}
+	
+	public String cadastrar() throws Exception {
+		
+		// Preparar cadastro
+		
+		return "create";
+	}
+	
+	public String editar() throws Exception {
+		
+		// Preparar edição
+		
+		return "edit";
+	}
+	
+	public String salvar() throws Exception{
+	
+		// Salvar novo usuário ou salvar alterações do paciente
+		
+		return execute();
+	}
+
+}

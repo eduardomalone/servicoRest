@@ -1,0 +1,93 @@
+package br.com.projeto.action;
+
+import java.util.List;
+
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
+
+import br.com.projeto.dao.MedicoDao;
+import br.com.projeto.entity.Medico;
+
+public class MedicoAction extends ActionSupport implements Action {
+	
+	private static final long serialVersionUID = 1L;
+
+	private Medico medico;
+	
+	private List<Medico> medicos;
+	
+	private MedicoDao dao = new MedicoDao();
+
+	@Override
+	public String execute() throws Exception {
+		
+		this.medicos = listar();
+		
+		return "success";
+	}
+	
+	public List<Medico> listar() throws Exception {
+		
+		return dao.findAll();
+
+	}
+	
+	public String telaForm() throws Exception {
+		return "form";
+	}
+	
+	public String salvar() throws Exception {
+		
+		// Salvar novo medico ou salvar alterações
+		
+		try {
+			
+			if(medico.getId() != null) {
+				
+				// Atualizar
+				
+				dao.update(medico);
+				
+				addActionMessage("Médico editado com sucesso.");
+				
+			} else {
+				
+				// Cadastrar
+				
+				dao.create(medico);
+								
+				addActionMessage("Médico cadastrado com sucesso.");
+			}
+			
+		} catch (Exception e) {
+			addActionError("Erro ao salvar as informações do médico.");
+		}
+		
+		return execute();
+	}
+	
+	public String remover() throws Exception {
+		
+		// remover
+		
+		return execute();
+		
+	}
+
+	public Medico getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+	public List<Medico> getMedicos() {
+		return medicos;
+	}
+
+	public void setMedicos(List<Medico> medicos) {
+		this.medicos = medicos;
+	}
+	
+}

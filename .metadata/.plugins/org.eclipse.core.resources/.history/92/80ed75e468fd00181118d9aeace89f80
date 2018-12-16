@@ -1,0 +1,74 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Paciente</title>
+<link href="styles/styles.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+
+function mascara(o, f) {
+	alert("mascara")
+	v_obj = o
+	v_fun = f
+	setTimeout("execMascara()", 1)
+}
+
+function execMascara() {
+	v_obj.value = v_fun(v_obj.value)
+}
+
+function cpf(v) {
+	v = v.replace(/\D/g, "")
+	v = v.replace(/(\d{3})(\d)/, "$1.$2")
+	v = v.replace(/(\d{3})(\d)/, "$1.$2")
+	v = v.replace(/(d\{3})(\d{1, 2})$/, "$1-$2")
+	return v
+}
+
+</script>
+
+</head>
+<body>
+
+<p>
+	<s:if test="paciente.id != null">Editar</s:if>
+	<s:else>Cadastrar</s:else>
+	Paciente
+</p>
+
+<form action="paciente" target="salvar" method="post">
+
+	<table>
+	
+		<tr>
+			<td>
+				<s:textfield name="paciente.nome" label="Nome"></s:textfield>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<s:textfield name="paciente.cpf" label="CPF" onkeypress="mascara(this, cpf)"></s:textfield>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<s:textfield name="paciente.endereco" label="Endereço"></s:textfield>
+			</td>
+		</tr>
+	
+	</table>
+	
+	<br>
+	
+	<s:submit name="salvar" value="Salvar" theme="simple" method="salvar" />
+	 
+</form>
+
+</body>
+</html>

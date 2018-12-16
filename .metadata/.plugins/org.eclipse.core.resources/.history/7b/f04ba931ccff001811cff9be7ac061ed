@@ -1,0 +1,73 @@
+html {
+	font-family: "Verdana";
+}
+
+table {
+	width: 100%;
+}
+
+.tableList {
+	text-align: center;
+}
+
+tr {
+	padding: 5px;
+}
+
+.tdLabel {
+	width: 10%;
+}
+
+.pTitulo {
+	border-radius: 15px 50px;
+    background-color: #A7AAAF;
+    padding-left: 20px;
+    line-height: 25px;
+    vertical-align: middle;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.trTitulo {
+	text-align: center;
+	font-weight: bold;
+	background-color: #CBCED5;
+}
+
+.imgLink {
+	color: black;
+	text-decoration: none;
+}
+
+.footerLink {
+	bottom: 0;
+    right: 0;
+    position: fixed;
+    text-align: center;
+    padding: 20px;	
+}
+
+.submitConfirm {
+	background-image: url("../images/confirm.png");
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    width: 100px !important;
+    height: 32px;
+    cursor: pointer;
+    outline: 0;
+    background-color: unset;
+    border: 0;
+    text-align: right;
+    font-family: inherit;
+    font-size: inherit;
+    float: left;
+}
+
+.actionErrors {
+	color: red;
+}
+
+.actionMessages {
+	color: green;
+}

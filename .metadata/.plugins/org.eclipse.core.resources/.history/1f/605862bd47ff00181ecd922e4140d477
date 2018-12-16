@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Exame</title>
+<link href="styles/styles.css" rel="stylesheet" type="text/css">
+<script src="includes/scripst.js"></script>
+</head>
+<body>
+
+<p>
+	<s:if test="exame.id != null">Editar</s:if>
+	<s:else>Cadastrar</s:else>
+	Exame
+</p>
+
+<form action="salvarExame" method="post">
+	<s:hidden name="exame.id"></s:hidden>
+	<table>
+		<tr>
+			<td>
+				<s:textfield name="exame.nome" label="Nome"></s:textfield>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Medico:
+				<sx:autocompleter size="1" list="medicos.nome" name="exame.country"></sx:autocompleter>
+<!-- 				</action> -->
+			</td>		
+		</tr>
+		<tr>
+			<td>
+				
+			</td>
+		</tr>
+	</table>
+	<br>
+	<s:submit name="salvar" value="Salvar" theme="simple" />
+</form>
+</body>
+</html>

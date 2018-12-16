@@ -1,0 +1,14 @@
+package br.com.projeto.servico;
+
+import javax.jws.WebService;
+
+@WebService(endpointInterface = "br.com.projeto.servico.TesteSoap")
+public class TesteSoapImpl implements TesteSoap{
+
+	@Override
+	public String testeSoap(String name) {
+		
+		return "eiiiiiiitaaaaaaa" + name;
+	}
+
+}

@@ -1,0 +1,62 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Paciente</title>
+<link href="styles/styles.css" rel="stylesheet" type="text/css">
+<script src="includes/scripst.js"></script>
+
+<script type="text/javascript">
+
+function validar() {
+	
+	var nome = document.getElementById("nome").value;
+	var cpf = document.getElementById("cpf").value;
+	var crm = document.getElementById("crm").value;
+	
+	//alert(nome + " " + cpf + " "  + crm)
+	
+	alert(nome && cpf && crm)
+	
+}
+
+</script>
+
+</head>
+<body>
+
+<input type="button" value="teste" onclick="validar()">
+
+<p class="pTitulo">
+	<s:if test="medico.id != null">Editar</s:if>
+	<s:else>Cadastrar</s:else>
+	Médico
+</p>
+
+<form action="salvarMedico" method="post">
+	<s:hidden name="medico.id"></s:hidden>
+	<table>
+		<tr>
+			<td>
+				<s:textfield name="medico.nome" label="Nome" id="nome"></s:textfield>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<s:textfield name="medico.cpf" label="CPF" onkeydown="mascara(this, cpf)" maxlength="14" id="cpf"></s:textfield>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<s:textfield name="medico.crm" label="CRM" id="crm"></s:textfield>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<s:submit name="salvar" value="Salvar" cssClass="submitConfirm" />
+</form>
+</body>
+</html>

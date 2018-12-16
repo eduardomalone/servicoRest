@@ -1,0 +1,107 @@
+package br.com.projeto.action;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
+
+import br.com.projeto.dao.ExameDao;
+import br.com.projeto.dao.MedicoDao;
+import br.com.projeto.dao.PacienteDao;
+import br.com.projeto.entity.Exame;
+import br.com.projeto.entity.Medico;
+import br.com.projeto.entity.Paciente;
+
+public class ExameAction extends ActionSupport implements Action{
+
+	private List<Exame> exames;
+	
+	private Exame exame;
+	
+	private ExameDao dao = new ExameDao();
+	
+	private PacienteDao pacienteDao = new PacienteDao();
+	private MedicoDao medicoDao = new MedicoDao();
+	
+	private List<Medico> medicos;
+	private List<Paciente> pacientes;
+	
+	private String data = "Afghanistan, Zimbabwe, India, United States, Germany, China, Israel";
+	private List<String> countries;
+	private String country;
+	
+	@Override
+	public String execute() throws Exception {
+		
+		countries = new ArrayList<String>();
+		StringTokenizer st = new StringTokenizer(data, ",");
+
+		while (st.hasMoreTokens()) {
+			countries.add(st.nextToken().trim());
+		}
+		
+		
+		this.exames = dao.findAll();
+		return "success";
+	}
+	
+	public String telaForm() throws Exception {
+		
+		medicos = medicoDao.findAll();
+		pacientes = pacienteDao.findAll();
+		
+		return "form";
+	}
+	
+	public String salvar() throws Exception {
+		
+		return execute();
+		
+	}
+
+	public List<Exame> getExames() {
+		return exames;
+	}
+
+	public void setExames(List<Exame> exames) {
+		this.exames = exames;
+	}
+
+	public Exame getExame() {
+		return exame;
+	}
+
+	public void setExame(Exame exame) {
+		this.exame = exame;
+	}
+
+	public Map<Long, String> getMedicos() {
+		
+		Map<Long, String> medicos = new HashMap<Long, String>();
+		
+		for(Medico m : this.medicos) {
+			
+			medicos.put(m.getId(), m.getNome());
+			
+		}
+		
+		return medicos;
+	}
+
+	public void setMedicos(List<Medico> medicos) {
+		this.medicos = medicos;
+	}
+
+	public List<Paciente> getPacientes() {
+		return pacientes;
+	}
+
+	public void setPacientes(List<Paciente> pacientes) {
+		this.pacientes = pacientes;
+	}
+	
+}

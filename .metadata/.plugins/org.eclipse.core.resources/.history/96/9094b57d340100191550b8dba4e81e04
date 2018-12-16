@@ -1,0 +1,15 @@
+package br.com.projeto.servico;
+
+import java.util.ArrayList;
+
+import javax.jws.WebService;
+
+import br.com.projeto.entity.Exame;
+
+@WebService(endpointInterface = "br.com.projeto.servico.SEIExame")
+public  class SEIExameImpl implements SEIExame{
+
+
+
+
+}

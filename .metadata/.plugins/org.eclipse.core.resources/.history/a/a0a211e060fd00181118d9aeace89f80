@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Paciente</title>
+</head>
+<body>
+
+<s:form action="salvarPaciente" method="post">
+
+	<s:textfield name="paciente.nome" label="Nome"></s:textfield>
+	<s:textfield name="paciente.endereco" label="Endereço"></s:textfield>
+	
+	//<s:property value="paciente.nome"/>//
+	
+	<s:submit name="salvar" value="Salvar" theme="simple"/>
+	 
+</s:form>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+package br.com.projeto.action;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
+
+import br.com.projeto.entity.Medico;
+
+// AINDA NAO TESTADO
+
+// AINDA NAO ADICIONADO NO STRUTS.XML
+
+public class MedicoAction extends ActionSupport implements Action {
+	
+	private static final long serialVersionUID = 1L;
+
+	private Medico medico;
+	
+	private List<Medico> medicos;
+
+	@Override
+	public String execute() throws Exception {
+		
+		//this.medicos = listar();
+		
+		if(medicos == null) medicos = listar();
+		
+		medico = new Medico();
+		
+		return "success";
+	}
+	
+	public List<Medico> listar() throws Exception {
+		
+		// Buscar todos os médicos
+		
+		List<Medico> temp = new ArrayList<>();
+		
+		temp.add(new Medico(1L, "Dr Teste", "000.000.000-00", ""));
+		temp.add(new Medico(2L, "Dr Blablabla", "000.000.000-00", ""));
+		
+		return temp;
+		
+	}
+	
+	public String cadastrar() throws Exception {
+		
+		// Preparar cadastro
+		
+		return "create";
+	}
+	
+	public String editar() throws Exception {
+		
+		// Preparar edição
+		
+		return "edit";
+	}
+	
+	public String salvar() throws Exception {
+		
+		// Salvar novo medico ou salvar alterações
+		
+		try {
+			
+			if(medico.getId() != null) {
+				//editar
+				
+				addActionMessage("Médico editado com sucesso.");
+				
+			} else {
+				medicos = listar();
+				medicos.add(medico);
+				medico = new Medico();
+				//cadastrar
+				
+				addActionMessage("Médico cadastrado com sucesso.");
+			}
+			
+		} catch (Exception e) {
+			addActionError("Erro ao salvar as informações do médico.");
+		}
+		
+		return execute();
+	}
+	
+	public String remover() throws Exception {
+		
+		// remover
+		
+		return execute();
+		
+	}
+	
+
+}

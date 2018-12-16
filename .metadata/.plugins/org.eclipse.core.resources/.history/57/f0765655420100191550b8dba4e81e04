@@ -1,0 +1,13 @@
+package br.com.projeto.util;
+
+import java.net.URL;
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
+ 
+import br.com.projeto.servico.SEIExame;
+
+public class ConexaoSOAP {
+
+	   private static final SEIExame sei = construirConexao();
+	   
+}

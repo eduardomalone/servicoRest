@@ -1,0 +1,17 @@
+INDEX VERSION 1.131
+C:\Users\Eduardo Lucio\strutsSoc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2807987412.index
+\tarefa_age\src
+C:\Users\Eduardo Lucio\strutsSoc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1887143509.index
+\tarefa_age\src
+C:\Users\Eduardo Lucio\strutsSoc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3314054513.index
+\tarefa_age\src
+C:\Users\Eduardo Lucio\strutsSoc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3854780261.index
+\StrutsSOC\src
+C:\Users\Eduardo Lucio\strutsSoc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3106969876.index
+\tarefa_age\src
+C:\Users\Eduardo Lucio\strutsSoc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1321662512.index
+\StrutsSOC\src
+C:\Users\Eduardo Lucio\strutsSoc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\459719545.index
+\tarefa_age\src
+C:\Users\Eduardo Lucio\strutsSoc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2695771353.index
+\tarefa_age\src

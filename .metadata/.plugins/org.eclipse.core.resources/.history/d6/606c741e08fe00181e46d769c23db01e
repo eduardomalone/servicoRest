@@ -1,0 +1,109 @@
+package br.com.projeto.action;
+
+import java.util.List;
+
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
+
+import br.com.projeto.dao.PacienteDao;
+import br.com.projeto.entity.Paciente;
+
+public class PacienteAction extends ActionSupport implements Action {
+	
+	private static final long serialVersionUID = 1L;
+
+	private Paciente paciente;
+	
+	private List<Paciente> pacientes;
+	
+	private PacienteDao dao = new PacienteDao();
+
+	@Override
+	public String execute() throws Exception {
+		
+		//this.pacientes = listar();
+		
+		if(pacientes == null) pacientes = listar();
+		
+		paciente = new Paciente();
+		
+		return "success";
+	}
+	
+	public List<Paciente> listar() throws Exception {
+		
+		return dao.findAll();
+
+	}
+	
+	public String cadastrar() throws Exception {
+		
+		// Preparar cadastro
+		
+		return "create";
+	}
+	
+	public String editar() throws Exception {
+		
+		// Preparar edição
+		
+		return "edit";
+	}
+	
+	public String salvar() throws Exception {
+		
+		// Salvar novo usuário ou salvar alterações do paciente
+		
+		try {
+			
+			if(paciente.getId() != null) {
+				
+				// Atualizar
+				
+				dao.update(paciente);
+				
+				addActionMessage("Paciente editado com sucesso.");
+				
+			} else {
+				
+				// Criar
+				
+				dao.create(paciente);
+				
+				addActionMessage("Paciente cadastrado com sucesso.");
+			}
+			
+		} catch (Exception e) {
+			addActionError("Erro ao salvar as informações do paciente.");
+		}
+		
+		return execute();
+	}
+	
+	public String remover() throws Exception {
+		
+		// remover usuario
+		
+		return execute();
+		
+	}
+	
+	// Getters and Setters
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public List<Paciente> getPacientes() {
+		return pacientes;
+	}
+
+	public void setPacientes(List<Paciente> pacientes) {
+		this.pacientes = pacientes;
+	}
+
+}

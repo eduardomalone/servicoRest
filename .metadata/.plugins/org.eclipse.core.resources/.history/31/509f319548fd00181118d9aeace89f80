@@ -1,0 +1,13 @@
+package br.com.projeto.entity;
+
+public class Paciente {
+	
+	private Long id;
+	
+	private String nome;
+	
+	private String endereco;
+	
+	private boolean ativo;
+
+}

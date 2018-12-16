@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<!-- <link href="styles/styles.css" rel="stylesheet" type="text/css"> -->
+<meta charset="ISO-8859-1">
+<title>Menu</title>
+
+<style type="text/css">
+
+hr {
+	border: 0;
+	border-top: 1px solid black;
+}
+
+</style>
+
+</head>
+<body>
+
+<h3>This content is of the included file.</h3>
+
+</body>
+</html>

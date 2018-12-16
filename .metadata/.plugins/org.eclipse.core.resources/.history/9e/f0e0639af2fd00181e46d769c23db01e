@@ -1,0 +1,23 @@
+package br.com.projeto.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class ConnectionFactory {
+	
+	// TODO adicionar valores
+	private static final String URL = "";
+	private static final String USER = "";
+	private static final String PASSWORD = "";
+	
+	public Connection getConnection() throws Exception {
+		
+		// verificar se precisa do Class.forName()
+		
+		Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+		
+		return connection;
+		
+	}
+
+}

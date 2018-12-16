@@ -1,0 +1,88 @@
+package br.com.projeto.entity;
+
+public class Paciente {
+	
+	private Long id;
+	private String nome;	
+	private String endereco;
+	private String cpf;
+	private boolean ativo;
+	
+	//construtor
+	public Paciente() {}
+	
+	//declaração
+	public Paciente(Long id, String nome, String endereco, String cpf) {
+		this.id = id;
+		this.nome = nome;
+		this.endereco = endereco;
+		this.cpf = cpf;
+		this.ativo = true;
+	}
+	
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+	 * @param nome the nome to set
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	/**
+	 * @return the endereco
+	 */
+	public String getEndereco() {
+		return endereco;
+	}
+
+	/**
+	 * @param endereco the endereco to set
+	 */
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	/**
+	 * @return the cpf
+	 */
+	public String getCpf() {
+		return cpf;
+	}
+
+	/**
+	 * @param cpf the cpf to set
+	 */
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+}

@@ -1,0 +1,22 @@
+package consumidor;
+
+import java.net.URL;
+
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
+
+public class Consumidora {
+	
+	 public static void main(String[] args) throws Exception {
+		  
+	        URL url = new URL("http://localhost:8085/servico/cumprimento?wsdl");
+	  
+	        QName qname = new QName("http://servico/", "TesteSoapImpl");
+	  
+	        Service service = Service.create(url, qname);
+	  
+	        TesteSoap cumprimento = service.getPort(TesteSoap.class);
+	  
+	        System.out.println(cumprimento.digaBoaNoite("Maria")); 
+
+}

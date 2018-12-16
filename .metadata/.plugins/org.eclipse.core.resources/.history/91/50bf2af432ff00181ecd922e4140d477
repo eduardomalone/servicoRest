@@ -1,0 +1,95 @@
+package br.com.projeto.action;
+
+import java.util.List;
+
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
+
+import br.com.projeto.dao.ExameDao;
+import br.com.projeto.dao.MedicoDao;
+import br.com.projeto.dao.PacienteDao;
+import br.com.projeto.entity.Exame;
+import br.com.projeto.entity.Medico;
+import br.com.projeto.entity.Paciente;
+
+public class ExameAction extends ActionSupport implements Action{
+
+	private List<Exame> exames;
+	
+	private Exame exame;
+	
+	private ExameDao dao = new ExameDao();
+	
+	private PacienteDao pacienteDao = new PacienteDao();
+	private MedicoDao medicoDao = new MedicoDao();
+	
+	private List<Medico> medicos;
+	private List<Paciente> pacientes;
+	
+	@Override
+	public String execute() throws Exception {
+		
+		this.exames = dao.findAll();
+		
+		return "success";
+	}
+	
+	public String telaForm() throws Exception {
+		
+		medicos = medicoDao.findAll();
+		pacientes = pacienteDao.findAll();
+		
+		return "form";
+	}
+	
+	public String salvar() throws Exception {
+		
+		return execute();
+		
+	}
+
+	public List<Exame> getExames() {
+		return exames;
+	}
+
+	public void setExames(List<Exame> exames) {
+		this.exames = exames;
+	}
+
+	public Exame getExame() {
+		return exame;
+	}
+
+	public void setExame(Exame exame) {
+		this.exame = exame;
+	}
+
+	/**
+	 * @return the medicos
+	 */
+	public List<Medico> getMedicos() {
+		return medicos;
+	}
+
+	/**
+	 * @param medicos the medicos to set
+	 */
+	public void setMedicos(List<Medico> medicos) {
+		this.medicos = medicos;
+	}
+
+	/**
+	 * @return the pacientes
+	 */
+	public List<Paciente> getPacientes() {
+		return pacientes;
+	}
+
+	/**
+	 * @param pacientes the pacientes to set
+	 */
+	public void setPacientes(List<Paciente> pacientes) {
+		this.pacientes = pacientes;
+	}
+	
+}

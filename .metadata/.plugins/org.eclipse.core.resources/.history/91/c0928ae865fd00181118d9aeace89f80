@@ -1,0 +1,17 @@
+html {
+	font-family: "Verdana";
+}
+
+table {
+	width: 100%;
+}
+
+tr {
+	padding: 5px;
+}
+
+.trTitulo {
+	text-align: center;
+	font-weight: bold;
+	background-color: #CBCED5;
+}

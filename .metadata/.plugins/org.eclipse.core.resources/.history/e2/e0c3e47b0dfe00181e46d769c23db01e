@@ -1,0 +1,27 @@
+package br.com.projeto.action;
+
+import java.util.List;
+
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
+
+import br.com.projeto.dao.ExameDao;
+import br.com.projeto.entity.Exame;
+
+public class ExameAction extends ActionSupport implements Action{
+
+	private List<Exame> exames;
+	
+	private Exame exame;
+	
+	private ExameDao dao = new ExameDao();
+	
+	@Override
+	public String execute() throws Exception {
+		
+		this.exames = dao.findAll();
+		
+		return "success";
+	}
+	
+}

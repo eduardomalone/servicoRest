@@ -1,0 +1,84 @@
+package br.com.projeto.action;
+
+import java.util.List;
+
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
+
+import br.com.projeto.dao.PacienteDao;
+import br.com.projeto.entity.Paciente;
+
+public class PacienteAction implements Action {
+	
+	private Paciente paciente;
+	
+	private List<Paciente> pacientes;
+	
+	private PacienteDao dao = new PacienteDao();
+
+	@Override
+	public String execute() throws Exception {
+		
+		this.pacientes = dao.findAll();
+		
+		return "success";
+	}
+	
+	public String telaForm() throws Exception {
+		return "form";
+	}
+	
+	public String salvar() throws Exception {
+		
+		// Salvar novo usuário ou salvar alterações do paciente
+		
+		try {
+			
+			if(paciente.getId() != null) {
+				
+				// Atualizar
+				
+				dao.update(paciente);
+				
+			} else {
+				
+				// Criar
+				
+				dao.create(paciente);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirectSuccess";
+	}
+	
+	public String remover() throws Exception {
+		
+		dao.exclusaoLogica(paciente.getId());
+		
+		return "redirectSuccess";
+		
+	}
+	
+	// Getters and Setters
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public List<Paciente> getPacientes() {
+		return pacientes;
+	}
+
+	public void setPacientes(List<Paciente> pacientes) {
+		this.pacientes = pacientes;
+	}
+
+}

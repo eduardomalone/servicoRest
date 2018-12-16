@@ -1,0 +1,35 @@
+package br.com.projeto.servico;
+
+import java.util.List;
+
+import javax.jws.WebService;
+
+import br.com.projeto.dao.ExameDao;
+import br.com.projeto.entity.Exame;
+
+@WebService(endpointInterface = "br.com.projeto.servico.SEIExame")
+public class SIBExame implements SEIExame {
+
+	@Override
+	public Exame consultarSoap(int id) {
+		ExameDao dao = new ExameDao();
+		try {
+			return dao.findById(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Exame> consultar() {
+		ExameDao dao = new ExameDao();
+		
+		try {
+			return dao.findAll();
+		} catch (Exception e) {
+			e.printStackTrace();		}
+		return null;
+	}
+
+}

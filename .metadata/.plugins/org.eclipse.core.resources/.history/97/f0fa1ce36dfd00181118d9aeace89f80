@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Paciente</title>
+<link href="styles/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<s:if test="hasActionErrors()">
+	<div class="actionErrors"><s:actionerror/></div>
+</s:if>
+<s:if test="hasActionMessages()">
+	<div class="actionMessages"><s:actionmessage></div>
+</s:if>
+
+<p>Pacientes</p>
+
+<table>
+
+	<tr class="trTitulo">
+		<td width="5%">ID</td>
+		<td width="40%">Nome</td>
+		<td width="20%">CPF</td>
+		<td width="30%">Endereço</td>
+		<td width="5%"></td>
+	</tr>
+	
+	<s:iterator value="pacientes">
+	
+		<tr>
+			<td><s:property value="id" /></td>
+			<td><s:property value="nome" /></td>
+			<td><s:property value="cpf" /></td>
+			<td><s:property value="endereco" /></td>
+			<td>
+				<s:url action="cadastrarPaciente" var="urlEdit" escapeAmp="false">
+					<s:param name="paciente.id"><s:property value="id" /></s:param>
+					<s:param name="paciente.nome"><s:property value="nome" /></s:param>
+					<s:param name="paciente.cpf"><s:property value="cpf" /></s:param>
+					<s:param name="paciente.endereco"><s:property value="endereco" /></s:param>
+				</s:url>
+				<a href="<s:property value="#urlEdit" />">Editar</a>
+			</td>
+		</tr>
+
+	</s:iterator>
+
+</table>
+
+<!--<s:action name="cadastrarPaciente" executeResult="true" />-->
+
+<a href="cadastrarPaciente">
+Cadastrar
+</a>
+
+</body>
+</html>

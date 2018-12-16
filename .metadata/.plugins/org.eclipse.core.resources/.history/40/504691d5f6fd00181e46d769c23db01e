@@ -1,0 +1,52 @@
+package br.com.projeto.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.projeto.entity.Paciente;
+import br.com.projeto.util.ConnectionFactory;
+
+public class PacienteDao {
+	
+	public List<Paciente> findAll() {
+		
+		List<Paciente> pacientes = new ArrayList<>();
+		
+		String query = "SELECT * FROM paciente";
+		
+		Connection con = new ConnectionFactory().getConnection();
+		PreparedStatement stmt = con.prepareStatement(query);
+		ResultSet rs = stmt.executeQuery();
+		
+		while(rs.next()) {
+			
+			pacientes.add(new Paciente(
+					rs.getLong("id"),
+					rs.getString("nome"),
+					rs.getString("cpf"),
+					rs.getString("endereco")
+					));
+			
+		}
+		
+		return pacientes;
+		
+	}
+
+	public void create(Paciente paciente) {
+		
+		String query = "INSERT INTO paciente() VALUES ()";
+		
+		
+	}
+	
+	public void update(Paciente paciente) {
+		
+		String query = "UPDATE paciente SET ()";
+		
+	}
+	
+}

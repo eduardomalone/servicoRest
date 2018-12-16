@@ -1,0 +1,55 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+  <struts>
+  
+  	<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
+    
+    <package name="br.com.projeto.action" extends="struts-default" namespace="/">
+        <action name="teste" class="br.com.projeto.action.IndexAction">
+            <result name="success">index.jsp</result>
+        </action>
+         <action name="contato" class="br.com.projeto.action.ContatosAction">
+            <result name="success">contatos.jsp</result>
+        </action>
+        
+        
+        <!--Paciente  -->
+        <action name="paciente" class="br.com.projeto.action.PacienteAction">
+            <result name="success">paciente.jsp</result>
+        </action>
+        
+        <action name="cadastrarPaciente" class="br.com.projeto.action.PacienteAction"
+        	method="cadastrar">
+        	<result name="create">form-paciente.jsp</result>
+        </action>
+        
+        <action name="paciente" class="br.com.projeto.action.PacienteAction"
+        	method="salvar">
+        	<result name="success">paciente.jsp</result>
+        </action>
+        
+        <!--Médico  -->
+        <action name="medico_*" class="br.com.projeto.action.MedicoAction" method="{1}">
+            <result name="success">medico.jsp</result>
+            <result name="create">form-medico.jsp</result>
+        </action>
+<!--         <action name="medico" class="br.com.projeto.action.MedicoAction"> -->
+<!--             <result name="success">medico.jsp</result> -->
+<!--         </action> -->
+        
+<!--         <action name="cadastrarMedico" class="br.com.projeto.action.MedicoAction" -->
+<!--         	method="cadastrar"> -->
+<!--         	<result name="create">form-medico.jsp</result> -->
+<!--         </action> -->
+        
+<!--         <action name="medico" class="br.com.projeto.action.MedicoAction" -->
+<!--         	method="salvar"> -->
+<!--         	<result name="success">medico.jsp</result> -->
+<!--         </action> -->
+        
+        
+        
+    </package>
+    
+  </struts>

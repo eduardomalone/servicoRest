@@ -1,0 +1,39 @@
+html {
+	font-family: "Verdana";
+}
+
+table {
+	width: 100%;
+	text-align: center;
+}
+
+tr {
+	padding: 5px;
+}
+
+.trTitulo {
+	text-align: center;
+	font-weight: bold;
+	background-color: #CBCED5;
+}
+
+.imgLink {
+	color: black;
+	text-decoration: none;
+}
+
+.footerLink {
+	bottom: 0;
+    right: 0;
+    position: fixed;
+    text-align: center;
+    padding: 20px;	
+}
+
+.actionErrors {
+	color: red;
+}
+
+.actionMessages {
+	color: green;
+}

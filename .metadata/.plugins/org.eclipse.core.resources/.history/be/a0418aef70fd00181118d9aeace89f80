@@ -1,0 +1,17 @@
+package br.com.projeto.entity;
+
+import java.sql.Date;
+
+public class Exame {
+	
+	private Long id;
+	
+	private String nome;
+	
+	private Paciente paciente;
+	
+	private Medico medico;
+	
+	private Date data;
+
+}

@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<a href="medico">Médicos</a>
+<a href="paciente">Pacientes</a>
+<a href="exames">Exames</a>
+
+teste
+<a href="contato">link contato</ahref>
+</body>
+</html>

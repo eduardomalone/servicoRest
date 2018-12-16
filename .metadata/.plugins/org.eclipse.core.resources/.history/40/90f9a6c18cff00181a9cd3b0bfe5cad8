@@ -1,0 +1,76 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+  <struts>
+  
+    <package name="br.com.projeto.action" extends="struts-default" namespace="/">
+        <action name="teste" class="br.com.projeto.action.IndexAction">
+            <result name="success">index.jsp</result>
+        </action>
+         <action name="contato" class="br.com.projeto.action.ContatosAction">
+            <result name="success">contatos.jsp</result>
+        </action>
+        
+        
+        <!--Paciente  -->
+        <action name="paciente" class="br.com.projeto.action.PacienteAction">
+            <result name="success">paciente.jsp</result>
+        </action>
+        
+        <action name="formPaciente" class="br.com.projeto.action.PacienteAction"
+        	method="telaForm">
+        	<result name="form">form-paciente.jsp</result>
+        </action>
+        
+        <action name="salvarPaciente" class="br.com.projeto.action.PacienteAction"
+        	method="salvar">
+        	<result name="redirectSuccess" type="redirectAction">paciente</result>
+        </action>
+        
+        <action name="removerPaciente" class="br.com.projeto.action.PacienteAction"
+        	method="remover">
+        	<result name="redirectSuccess" type="redirectAction">paciente</result>
+        </action>
+        
+        <!--Médico  -->
+        <action name="medico" class="br.com.projeto.action.MedicoAction">
+            <result name="success">medico.jsp</result>
+        </action>
+        
+        <action name="formMedico" class="br.com.projeto.action.MedicoAction"
+        	method="telaForm">
+        	<result name="form">form-medico.jsp</result>
+        </action>
+        
+        <action name="salvarMedico" class="br.com.projeto.action.MedicoAction"
+        	method="salvar">
+        	<result name="redirectSuccess" type="redirectAction">medico</result>
+        </action>
+        
+        <action name="removerMedico" class="br.com.projeto.action.MedicoAction"
+        	method="remover">
+        	<result name="redirectSuccess" type="redirectAction">medico</result>
+        </action>
+        
+        <!-- Exame -->
+        <action name="exame" class="br.com.projeto.action.ExameAction">
+            <result name="success">exame.jsp</result>
+        </action>
+        
+        <action name="formExame" class="br.com.projeto.action.ExameAction"
+        	method="telaForm">
+        	<result name="form">form-exame.jsp</result>
+        </action>
+        
+        <action name="salvarExame" class="br.com.projeto.action.ExameAction"
+        	method="salvar">
+        	<result name="success">exame.jsp</result>
+        </action>
+        
+        <action name="ajaxdemo" class="br.com.projeto.action.AjaxAutocomplete">
+			<result name="success">ajaxdemo.jsp</result>
+		</action>
+        
+    </package>
+    
+  </struts>

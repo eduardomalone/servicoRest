@@ -1,0 +1,177 @@
+package br.com.projeto.action;
+
+import java.sql.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.opensymphony.xwork2.Action;
+
+import br.com.projeto.dao.ExameDao;
+import br.com.projeto.dao.MedicoDao;
+import br.com.projeto.dao.PacienteDao;
+import br.com.projeto.entity.Exame;
+import br.com.projeto.entity.Medico;
+import br.com.projeto.entity.Paciente;
+
+public class ExameAction implements Action{
+
+	private List<Exame> exames;
+	
+	private Exame exame;
+		
+	private List<Medico> medicos;
+	private List<Paciente> pacientes;
+	
+	@Override
+	public String execute() throws Exception {
+				
+		this.exames = new ExameDao().findAll();
+		
+		return "success";
+	}
+	
+	/**
+	 * Método que prepara a tela de formulário
+	 */
+	public String telaForm() {
+		
+		try {
+			
+			PacienteDao pacienteDao = new PacienteDao();
+			MedicoDao medicoDao = new MedicoDao();
+			
+			// Buscar todos os médicos e pacientes ativos
+			medicos = medicoDao.findAll();
+			pacientes = pacienteDao.findAll();
+			
+			// Se for um cadastro, iniciar o campo data com o data atual
+			if(exame == null || exame.getId() == null) {
+				exame = new Exame();
+				exame.setData(new Date(System.currentTimeMillis()));
+			}
+			
+ 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "form";
+	}
+	
+	/**
+	 * Método que cadastra ou edita um exame.
+	 */
+	public String salvar() {
+		
+		try {
+			
+			if(exame.getId() != null) {
+				
+				// Atualizar
+				
+				dao.update(exame);
+				
+			} else {
+				
+				// Cadastrar
+				
+				dao.create(exame);
+								
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+			//addActionError("Erro ao salvar as informações do médico.");
+		}
+		
+		return "redirectSuccess";
+		
+	}
+	
+	/**
+	 * Método que realiza a exclusão lógica de um exame.
+	 */
+	public String remover() {
+		
+		try {
+			
+			dao.exclusaoLogica(exame.getId());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirectSuccess";
+		
+	}
+	
+
+	public List<Exame> getExames() {
+		return exames;
+	}
+
+	public void setExames(List<Exame> exames) {
+		this.exames = exames;
+	}
+
+	public Exame getExame() {
+		return exame;
+	}
+
+	public void setExame(Exame exame) {
+		this.exame = exame;
+	}
+
+	public Map<Long, String> getMedicos() {
+		
+		Map<Long, String> medicos = new HashMap<Long, String>();
+		
+		for(Medico m : this.medicos) {
+			
+			medicos.put(m.getId(), m.getNome());
+			
+		}
+		
+		return medicos;
+	}
+
+	public void setMedicos(List<Medico> medicos) {
+		this.medicos = medicos;
+	}
+
+	public Map<Long, String> getPacientes() {
+		
+		Map<Long, String> pacientes = new HashMap<Long, String>();
+		
+		for(Paciente m : this.pacientes) {
+			
+			pacientes.put(m.getId(), m.getNome());
+			
+		}
+		
+		return pacientes;
+		
+	}
+
+	public void setPacientes(List<Paciente> pacientes) {
+		this.pacientes = pacientes;
+	}
+	private Map<Long, String> id;
+
+	/**
+	 * @return the id
+	 */
+	public Map<Long, String> getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Map<Long, String> id) {
+		this.id = id;
+	}
+
+	
+}

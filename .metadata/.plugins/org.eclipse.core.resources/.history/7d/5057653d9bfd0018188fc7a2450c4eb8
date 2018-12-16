@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Paciente</title>
+<link href="styles/styles.css" rel="stylesheet" type="text/css">
+<script src="includes/scripst.js"></script>
+</head>
+<body>
+
+<p>
+	<s:if test="paciente.id != null">Editar</s:if>
+	<s:else>Cadastrar</s:else>
+	Paciente
+</p>
+
+<form action="cadastrarPaciente" method="post">
+
+	<s:hidden name="paciente.id"></s:hidden>
+
+	<table>
+	
+		<tr>
+			<td>
+				<s:textfield name="paciente.nome" label="Nome"></s:textfield>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<s:textfield name="paciente.cpf" label="CPF" onkeydown="mascara(this, cpf)" maxlength="14"></s:textfield>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<s:textfield name="paciente.endereco" label="Endereço"></s:textfield>
+			</td>
+		</tr>
+	
+	</table>
+	
+	<br>
+	
+	<s:submit name="salvar" value="Salvar" theme="simple" />
+	 
+</form>
+
+</body>
+</html>
